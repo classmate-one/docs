@@ -7,6 +7,6 @@ function f (arr, sum) {
 			arr2.splice(arr.indexOf(sum - val), 1, null)
 			arr1.push([val, sum - val])
 		}
-	})
+  })
 	return arr1
 }
