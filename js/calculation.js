@@ -1,5 +1,5 @@
 // 设计一个算法找到乱序数组中相加等于指定值的所有数对
-function f (arr, sum) {
+function sumPair (arr, sum) {
 	let [arr1, arr2] = [[], [...arr]]
 	arr2.forEach((val, i) => {
 		arr2.splice(i, 1, null)
@@ -9,4 +9,28 @@ function f (arr, sum) {
 		}
   })
 	return arr1
+}
+
+function timeOut (date) {
+  let [diff, dat] = []
+  diff = new Date(date) - new Date()
+  if (isNaN(diff)) {
+    return 0
+  }
+  dat = {
+    days: parseInt(diff / (24 * 60 * 60)),
+    hours: parseInt(diff % (24 * 60 * 60) / 60 / 60),
+    min: parseInt(diff % (60 * 60) / 60),
+    s: parseInt(diff % 60)
+  }
+  return dat
+}
+
+function haowang (f) {
+  let [i1, arr] = [0, []]
+  for (let i = 0; i < f; i++) {
+    [i1, i] = [i, i1 + i]
+    arr.push(i1)
+  }
+  return arr
 }
