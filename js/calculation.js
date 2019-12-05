@@ -34,3 +34,8 @@ function haowang (f) {
   }
   return arr
 }
+
+function arrayPeak (arr, n) {
+  let arr1 = arr.splice(0, n).sort((a, b) => a - b)
+  return [arr1[0], arr1[arr1.length - 1]]
+}
