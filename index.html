@@ -186,6 +186,10 @@
       <span>低版本重启nginx</span>
       <span>./nginx -s reload</span>
     </h2>
+    <h2>
+      <span>IP地址查询</span>
+      <input type="text" onchange="handleChangeIP(this)">
+    </h2>
   </div>
   <div style="margin-top: 20px;text-align: center;"><a href="http://www.miitbeian.gov.cn"
       style="text-decoration: none;">蜀ICP备18036591号-1</a></div>
@@ -195,6 +199,9 @@
     document.getElementById('d2').value = timeOut.toString()
     document.getElementById('d3').value = haowang.toString()
     document.getElementById('d4').value = arrayPeak.toString()
+    function handleChangeIP ({ value }) {
+      window.open('http://ip-api.com/json/' + value + '?lang=zh-CN')
+    }
   </script>
 </body>
 
