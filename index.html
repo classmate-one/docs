@@ -190,6 +190,22 @@
       <span>IP地址查询</span>
       <input type="text" onchange="handleChangeIP(this)">
     </h2>
+    <h2>
+      <span>唯一文件</span>
+      <div>
+        var input  = document.querySelector('input');
+        input.addEventListener('change', function () {
+            var file=  this.files[0];
+            var reader = new FileReader();
+            reader.readAsArrayBuffer(file);
+            reader.addEventListener('load',function (e) {
+                var buffer = e.target.result;
+                var md = md5(buffer);
+                console.log(md);
+            });
+        });
+      </div>
+    </h2>
   </div>
   <div style="margin-top: 20px;text-align: center;"><a href="http://www.miitbeian.gov.cn"
       style="text-decoration: none;">蜀ICP备18036591号-1</a></div>
