@@ -1,0 +1,416 @@
+
+// @font-face {
+//   font-family: 'Impact';
+//   src: url('/static/fonts/impact.ttf')
+// }
+html, body {
+  // font-size: 100px;
+  padding: 0;
+  margin: 0;
+}
+h1, h2, h3, h4, h5, p, a, ul, li, span, img {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-weight: 100;
+  list-style: none;
+}
+a, a:hover, a:active, a:link, a:focus, a:visited{
+  color: #303133;
+  background-color: transparent !important;
+}
+
+.bsgx {
+  &-block {
+    min-height: 100vh;
+  }
+  &-t {
+    &c {text-align: center;vertical-align: middle;}
+    &r {text-align: right;}
+    &l {text-align: left;}
+    &t {vertical-align: top;}
+  }
+
+  &-oh {
+    overflow: hidden;
+    &-y {
+      overflow-y: hidden;
+      overflow-x: auto;
+    }
+    &-x {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+  &-f {
+    &l {float: left;}
+    &r {float: right;}
+  }
+
+  &-mc {
+    margin: 0 auto;
+  }
+
+  &-pr {
+    position: relative;
+  }
+
+  &-explain {
+    padding: 5px 10px;
+    border-left: 1px solid rgb(203, 166, 108)
+  }
+  &-bottom {
+    position: absolute;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  &-sn {user-select: none;}
+  &-pt {cursor: pointer;}
+}
+
+.color {
+  &-w {
+    color: #ffffff;
+  }
+  &-d2c9cf {
+    color: #d2c9cf;
+  }
+  &-0079fe {
+    color: #5c9ee4 !important;
+  }
+  &-b {
+    color: #000000;
+  }
+  &-c90 {
+    color: #c90;
+  }
+  &-666 {
+    color: #666666;
+  }
+  &-8f591d {
+    color: #8f591d;
+  }
+  &-5796d0 {
+    color: #5796d0;
+  }
+  &-293462 {
+    color: #293462;
+  }
+  &-f83c01 {
+    color: #f83c01;
+  }
+  &-b79208 {
+    color: #b79208;
+  }
+  &-579aff {
+    color: #579aff;
+  }
+  &-ce4a21 {
+    color: #ce4a21;
+  }
+  &-29 {
+    color: #292929;
+  }
+  &-f4c720 {
+    color: #f4c720;
+  }
+  &-pink {
+    color: pink;
+  }
+  &-00b7a8 {color: #00b7a8;}
+  &-409eff {color: #409eff !important;}
+  &-f56c6c {color: #f56c6c !important;}
+  &-909399 {color: #909399 !important;}
+  &-67C23A {color: #67C23A !important;}
+  &-E6A23C {color: #E6A23C !important;}
+}
+.bg {
+  &-tsp {background-color: transparent;}
+  &-w {
+    background-color: #ffffff;
+  }
+  &-red {background-color: #f35757;}
+  &-0079fe {
+    background-color: #6faff3;
+  }
+  &-323178 {
+    background-color: #323178;
+  }
+  &-d7 {
+    background-color: #d7d7d7;
+  }
+  &-f2d8b7 {
+    background-color: #f2d8b7;
+  }
+  &-e3c7a2 {
+    background-color: #e3c7a2;
+  }
+  &-f2 {
+    background-color: #f2f2f2;
+  }
+  &-f5 {
+    background-color: #f5f5f5;
+  }
+  &-bc {
+    background-color: #bcbcbc;
+  }
+  &-e4 {
+    background-color: #e4e4e4;
+  }
+  &-cba66c {
+    background-color: #cba66c;
+  }
+  &-e5c997 {
+    background-color: #e5c997;
+  }
+  &-f08f09 {
+    background-color: #f08f09;
+  }
+  &-19b7fd {
+    background-color: #19b7fd;
+  }
+  &-3cb035 {
+    background-color: #54b34f;
+  }
+  &-e4 {
+    background-color: #e4e4e4;
+  }
+  &-d9a754 {
+    background-color: #d9a754;
+  }
+  &-dcbd88 {
+    background-color: #dcbd88;
+  }
+  &-ea {
+    background-color: #eaeaea;
+  }
+  &-ec {
+    background-color: #ececec;
+  }
+  &-528fc8 {
+    background-color: #528fc8;
+  }
+  &-97cdff {
+    background-color: #97cdff;
+  }
+  &-cfb761 {
+    background-color: #cfb761;
+  }
+  &-f4c720 {
+    background-color: #f4c720;
+  }
+  &-333 {
+    background-color: #333333e0;
+  }
+  &-a6d2fb {
+    background-color: #a6d2fb;
+  }
+  &-5796d0 {
+    background-color: #5796d0;
+  }
+  &-eae3ff {
+    background-color: #eae3ff;
+  }
+  &-c7 {
+    background-color: #c7c7c7;
+  }
+  &-e1 {
+    background-color: #e1e1e1;
+  }
+  &-59b862 {
+    background-color: #59b862;
+  }
+}
+
+.mg {
+  &5 {margin: 5px;}
+  &10 {margin: 10px;}
+  &-t {
+    &5 {
+      margin-top: 5px;
+    }
+    &10 {
+      margin-top: 10px;
+    }
+    &15 {
+      margin-top: 15px;
+    }
+    &20 {
+      margin-top: 20px;
+    }
+    &30 {
+      margin-top: 30px;
+    }
+    &40 {
+      margin-top: 40px;
+    }
+  }
+
+  &-l {
+    &5 {
+      margin-left: 5px;
+    }
+    &10 {
+      margin-left: 10px;
+    }
+    &20 {
+      margin-left: 20px;
+    }
+  }
+  &-r {
+    &5 {margin-right: 5px;}
+    &10 {margin-right: 10px;}
+    &20 {margin-right: 20px;}
+  }
+}
+
+.pad {
+  &5 {
+    padding: 5px;
+  }
+  &10 {
+    padding: 10px;
+  }
+  &20 {
+    padding: 20px;
+  }
+
+  &-l {
+    &5 {
+      padding: 0 5px;
+    }
+    &10 {
+      padding: 0 10px;
+    }
+    &15 {
+      padding: 0 15px;
+    }
+    &20 {
+      padding: 0 20px;
+    }
+    &30 {
+      padding: 0 30px;
+    }
+  }
+
+  &-n {
+    &5 {
+      padding: 5px 0;
+    }
+    &10 {
+      padding: 10px 0;
+    }
+    &20 {
+      padding: 20px 0;
+    }
+  }
+}
+
+.radius {
+  &50 {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &-50 {
+    border-radius: 50px;
+    overflow: hidden;
+  }
+  &-20 {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  &-40 {
+    border-radius: 40px;
+    overflow: hidden;
+  }
+  &-10 {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  &-5 {
+    border-radius: 5px;
+    overflow: hidden;
+  }
+}
+.font {
+  &-w {
+    font-weight: bold;
+  }
+  &-big {
+    font-size: 25px;
+  }
+  &-md {
+    font-size: 18px;
+  }
+  &-mini {
+    font-size: 12px;
+  }
+  &-ip {
+    font-family: 'Impact'
+  }
+  &-solid {
+    white-space: nowrap;
+  }
+  &-tl {
+    text-decoration: underline;
+  }
+  &-13 {font-size: 13px;}
+}
+.border {
+  border: 1px solid transparent;
+  &-color {
+    &__w {border-color: #fff !important;}
+    &__b {border-color: #000000;}
+  }
+  &-black {
+    border-color: #000000;
+  }
+  &-fc3 {
+    border-color: #fc3;
+  }
+  &-f2 {
+    border-color: #f2f2f2;
+  }
+  &-vip {
+    border-color: #f4c720;
+  }
+  &-c9 {
+    border-color: #c9c9c9;
+  }
+  &-bottom {
+    border-bottom: 1px solid #e9e9e9 !important;
+  }
+  &-none {
+    & input {
+      border: 0;
+      outline: 0;
+    }
+    border-color: transparent;
+    outline: 0;
+  }
+  &-shadow {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
+  }
+}
+
+.img {
+  &-block {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+  }
+}
+.indent {
+  &-20 {
+    text-indent: 20px;
+  }
+  &-40 {
+    text-indent: 40px;
+  }
+}
+.letter {
+  &-1 {letter-spacing: 1px;}
+  &-5 {letter-spacing: 5px;}
+  &-10 {letter-spacing: 10px;}
+}
