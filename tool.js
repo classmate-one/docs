@@ -56,3 +56,12 @@ export function textFilter (val, max, now) {
   }
   return val
 }
+
+// 时间过滤
+export function timeFilter (time, d = 'time') {
+  if (!time) {
+    return ''
+  }
+  let t = new Date(time)
+  return [t.getFullYear(), (t.getMonth() > 8 ? '' : '0') + (t.getMonth() + 1), (t.getDate() > 9 ? '' : '0') + t.getDate()].join('-') + (d == 'date' ? '' : (' ' + [t.getHours() > 9 ? t.getHours() : ('0' + t.getHours()), t.getMinutes() > 9 ? t.getMinutes() : ('0' + t.getMinutes()), t.getSeconds() > 9 ? t.getSeconds() : ('0' + t.getSeconds())].join(':')))
+}
