@@ -45,3 +45,13 @@ function getCracker(arr1, arr2) { // arr1: 小朋友对饼干的需求 arr2: 现
   }
   return arr
 }
+
+function getMultipication (figure) {
+  let arr = []
+  for (let i = 1; i < Math.sqrt(figure); i++) {
+    if (figure % i === 0) {
+      arr.push([i, figure / i])
+    }
+  }
+  return arr
+}
