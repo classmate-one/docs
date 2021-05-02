@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <span>选择文件</span>
+    <input type="file" name="" id="fileID">
+  </div>
+  <div>
+    <span>放大倍数</span>
+    <input type="number" id="scaleID">
+  </div>
+  <div>
+    <button id="submitID">确定</button>
+  </div>
+  <div>
+    <p>效果图</p>
+    <div>
+      <canvas id="canvasID"></canvas>
+      <canvas id="newCanvasID"></canvas>
+    </div>
+  </div>
+  <script>
+    const fileID = document.getElementById('fileID');
+    const submitID = document.getElementById('submitID');
+    const scaleID = document.getElementById('scaleID');
+    const canvasID = document.getElementById('canvasID');
+    const newCanvasID = document.getElementById('newCanvasID');
+    const ctx = canvasID.getContext('2d');
+    const newCtx = newCanvasID.getContext('2d');
+
+    fileID.onchange = () => {
+      const file = fileID.files[0];
+      if(!file) {
+        return;
+      }
+      const fr = new FileReader();
+      fr.readAsDataURL(file);
+      fr.onload = (e) => {
+        const image = new Image();
+        image.src = e.target.result;
+        image.onload = () => {
+          canvasID.width = image.width;
+          canvasID.height = image.height;
+          ctx.drawImage(image, 0, 0, image.width, image.height);
+        }
+      }
+    }
+    submitID.onclick = () => {
+      const imgData = ctx.getImageData(0, 0, canvasID.width, canvasID.height);
+      const ratio = Number(scaleID.value) || 1;
+      const newImageData = spreadImageData(imgData, ratio);
+      newCanvasID.width = ratio * canvasID.width;
+      newCanvasID.height = ratio * canvasID.height;
+      newCtx.putImageData(newImageData, 0, 0);
+    }
+    function spreadImageData(imgData, ratio, size = {}) {
+      const { width, height, data } = imgData;
+      console.log(width, ratio)
+      console.log(size?.width || width * ratio, size?.height || height * ratio)
+      const result = new ImageData(size?.width || width * ratio, size?.height || height * ratio);
+      const { width: rw, data: rData } = result;
+      // 把源数据一个像素点填充到目标的10个像素点上，达到把图像放大10倍的目的
+      for (let sourceRowIndex = 0; sourceRowIndex < height; sourceRowIndex++) {
+        for (let sourceColumnIndex = 0; sourceColumnIndex < width; sourceColumnIndex++) {
+          const sourcePixelIndex = (sourceRowIndex * width + sourceColumnIndex) * 4;
+          const [r, g, b, a] = [
+            data[sourcePixelIndex],
+            data[sourcePixelIndex + 1],
+            data[sourcePixelIndex + 2],
+            data[sourcePixelIndex + 3],
+          ];
+          for (let resultRowIndex = 0; resultRowIndex < ratio; resultRowIndex++) {
+            const resultPixelIndex = sourceRowIndex * ratio + resultRowIndex;
+            for (let resultColumnIndex = 0; resultColumnIndex < ratio; resultColumnIndex++) {
+              const resultDataIndex = (resultPixelIndex * rw + sourceColumnIndex * ratio + resultColumnIndex) * 4;
+              rData[resultDataIndex] = r;
+              rData[resultDataIndex + 1] = g;
+              rData[resultDataIndex + 2] = b;
+              rData[resultDataIndex + 3] = a;
+            }
+          }
+        }
+      }
+      return result;
+    }
+
+  </script>
+</body>
+
+</html>
