@@ -1,7 +1,7 @@
 ## 博客学习资源
 
 ### 介绍
-[公网地址](http://luoschool.cn)
+[公网地址](http://classmate-one.cn)
 
 ### 放大图片
 [示例](./html/image.html)
