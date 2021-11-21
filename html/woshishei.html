@@ -37,11 +37,11 @@
     drawImage(pkqCtx, '../assets/pkq3.png');
 
     const handleWss = (e) => {
-      drawText(pkqCtx, e.value, 288, 80)
+      drawText(pkqCtx, e.value, 292, 80)
     }
 
     const handlePlaceholder = (e) => {
-      drawText(pkqCtx, e.value, 288, 140)
+      drawText(pkqCtx, e.value, 292, 140)
     }
 
     const handleImage = (e) => {
@@ -73,8 +73,6 @@
         ctx.beginPath();
         const image = new Image();
         image.src = url;
-        // image.width = w;
-        // image.height = h;
         image.onload = () => {
           ctx.drawImage(image, x, y, w, h);
           ctx.restore();
