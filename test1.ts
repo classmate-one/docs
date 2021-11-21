@@ -24,6 +24,9 @@ image.onload = () => {
   ctx.drawImage(image, 0, 0);
   ctx.font = '微软雅黑 20px';
   ctx.save();
+  ctx.clearRect(0,0,0,0);
+  ctx.fillStyle = '#395980'
+  ctx.fillRect();
   ctx.restore();
   ctx.beginPath();
   ctx.fillText('jojo', 0, 0)

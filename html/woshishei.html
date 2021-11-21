@@ -19,6 +19,8 @@
   <canvas id="wss" width="500" height="370"></canvas>
   <canvas id="pkq" width="500" height="370"></canvas>
   <div>
+    <input type="file" onchange="handleImage(this)">
+    <br>
     <input type="text" placeholder="我是谁" oninput="handleWss(this)">
     <br>
     <input type="text" placeholder="说明" oninput="handlePlaceholder(this)">
@@ -28,6 +30,7 @@
     const wss = document.querySelector('canvas#wss');
     const wssCtx = wss.getContext('2d');
     drawImage(wssCtx, '../assets/pkq4.png');
+
     // 皮卡丘
     const pkq = document.getElementById('pkq');
     const pkqCtx = pkq.getContext('2d');
@@ -41,24 +44,44 @@
       drawText(pkqCtx, e.value, 288, 140)
     }
 
-    function drawText(ctx, text, x, y) {
-      ctx.clearRect(x, y - 40, 500, 44);
-      ctx.fillStyle = '#395980'
-      ctx.fillRect(x, y - 40, 209, 44);
-      ctx.beginPath();
-      ctx.font = '40px 微软雅黑';
-      ctx.fillStyle = '#d8f386'
-      ctx.fillText(text, x, y);
+    const handleImage = (e) => {
+      const file = e.files[0];
+      const fileReader = new FileReader();
+      fileReader.onload = (e2) => {
+        drawImage(pkqCtx, e2.target.result, 30, 30, 175, 200).then(() => {
+          drawImage(pkqCtx, '../assets/pkq3.png');
+        });
+      }
+      fileReader.readAsDataURL(file);
     }
 
-    function drawImage(ctx, url) {
-      const image = new Image();
-      image.src = url;
-      image.width = 500;
-      image.height = 370;
-      image.onload = () => {
-        ctx.drawImage(image, 0, 0);
-      }
+    function drawText(ctx, text, x, y) {
+      ctx.save();
+      ctx.clearRect(x, y - 40, 500, 50);
+      ctx.fillStyle = '#395980'
+      ctx.fillRect(x, y - 40, 209, 50);
+      ctx.beginPath();
+      ctx.font = '30px 微软雅黑';
+      ctx.fillStyle = '#d8f386'
+      ctx.fillText(text, x, y);
+      ctx.restore();
+    }
+
+    function drawImage(ctx, url, x = 0, y = 0, w = 500, h = 370) {
+      return new Promise((resolve, reject) => {
+        ctx.save();
+        ctx.beginPath();
+        const image = new Image();
+        image.src = url;
+        // image.width = w;
+        // image.height = h;
+        image.onload = () => {
+          ctx.drawImage(image, x, y, w, h);
+          ctx.restore();
+          resolve(image);
+        }
+        image.onerror = reject;
+      });
     }
   </script>
 </body>
