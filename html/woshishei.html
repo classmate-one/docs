@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="wss" width="500" height="370"></canvas>
+  <canvas id="pkq" width="500" height="370"></canvas>
+  <div>
+    <input type="text" placeholder="我是谁" oninput="handleWss(this)">
+    <br>
+    <input type="text" placeholder="说明" oninput="handlePlaceholder(this)">
+  </div>
+  <script>
+    // 我是谁
+    const wss = document.querySelector('canvas#wss');
+    const wssCtx = wss.getContext('2d');
+    drawImage(wssCtx, '../assets/pkq4.png');
+    // 皮卡丘
+    const pkq = document.getElementById('pkq');
+    const pkqCtx = pkq.getContext('2d');
+    drawImage(pkqCtx, '../assets/pkq3.png');
+
+    const handleWss = (e) => {
+      drawText(pkqCtx, e.value, 288, 80)
+    }
+
+    const handlePlaceholder = (e) => {
+      drawText(pkqCtx, e.value, 288, 140)
+    }
+
+    function drawText(ctx, text, x, y) {
+      ctx.clearRect(x, y - 40, 500, 44);
+      ctx.fillStyle = '#395980'
+      ctx.fillRect(x, y - 40, 209, 44);
+      ctx.beginPath();
+      ctx.font = '40px 微软雅黑';
+      ctx.fillStyle = '#d8f386'
+      ctx.fillText(text, x, y);
+    }
+
+    function drawImage(ctx, url) {
+      const image = new Image();
+      image.src = url;
+      image.width = 500;
+      image.height = 370;
+      image.onload = () => {
+        ctx.drawImage(image, 0, 0);
+      }
+    }
+  </script>
+</body>
+
+</html>
