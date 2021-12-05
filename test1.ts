@@ -30,4 +30,8 @@ image.onload = () => {
   ctx.restore();
   ctx.beginPath();
   ctx.fillText('jojo', 0, 0)
+  wss.toDataURL();
 }
+
+const a = document.createElement('a');
+a

@@ -8,22 +8,27 @@
   <title>Document</title>
   <style>
     body {
-      padding: 0;
+      padding: 20px;
       margin: 0;
-      display: flex;
     }
   </style>
 </head>
 
 <body>
-  <canvas id="wss" width="500" height="370"></canvas>
-  <canvas id="pkq" width="500" height="370"></canvas>
-  <div>
-    <input type="file" onchange="handleImage(this)">
-    <br>
-    <input type="text" placeholder="我是谁" oninput="handleWss(this)">
-    <br>
-    <input type="text" placeholder="说明" oninput="handlePlaceholder(this)">
+  <div style="display: flex;flex-wrap: wrap;gap: 12px;">
+    <canvas id="wss" width="500" height="370"></canvas>
+    <canvas id="pkq" width="500" height="370"></canvas>
+    <div>
+      <input type="file" onchange="handleImage(this)">
+      <br>
+      <input type="text" placeholder="我是谁" oninput="handleWss(this)">
+      <br>
+      <input type="text" placeholder="说明" oninput="handlePlaceholder(this)">
+      <div>
+        <button onclick="handleDownLoadWss(this)">下载第一张</button>
+        <button onclick="handleDownLoadPkq(this)">下载第二张</button>
+      </div>
+    </div>
   </div>
   <script>
     // 我是谁
@@ -55,6 +60,16 @@
       fileReader.readAsDataURL(file);
     }
 
+    const handleDownLoadWss = () => {
+      const url = wss.toDataURL();
+      downLoad(url, '我是谁');
+    }
+
+    const handleDownLoadPkq = () => {
+      const url = pkq.toDataURL();
+      downLoad(url, '皮卡丘');
+    }
+
     function drawText(ctx, text, x, y) {
       ctx.save();
       ctx.clearRect(x, y - 40, 500, 50);
@@ -80,6 +95,17 @@
         }
         image.onerror = reject;
       });
+    }
+
+    function downLoad(url, name) {
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.download = name;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
     }
   </script>
 </body>
