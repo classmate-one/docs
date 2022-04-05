@@ -6,6 +6,9 @@
 ### 皮卡丘生成器
 [点我跳转](./html/woshishei.html)
 
+### 放大镜
+[说明](https://magnifier.oulaoula.cn/)
+
 ### 放大图片
 [示例](./html/image.html)
 
